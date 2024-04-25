@@ -6,6 +6,7 @@
       <el-container>
         <el-header class="header">
           <Collapse></Collapse>
+          <BreadCrumb></BreadCrumb>
         </el-header>
         <el-main class="mymain">
           <router-view></router-view>
@@ -17,6 +18,7 @@
 <script setup lang="ts">
 import Menu from './Menu.vue';
 import Collapse from './Collapse.vue';
+import BreadCrumb from './BredCrumb.vue';
 </script>
 
 <style scoped lang="scss">

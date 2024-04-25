@@ -11,7 +11,7 @@
           <!-- 递归调用生成下级菜单 -->
           <menu-item :menuList="menu.children"></menu-item>
         </el-sub-menu>
-        <el-menu-item v-else :index="menu.path">
+        <el-menu-item style="color: #f4f4f5" v-else :index="menu.path">
           <el-icon>
             <!-- 动态组件 -->
             <component :is="menu.meta.icon"></component>

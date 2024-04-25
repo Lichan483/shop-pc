@@ -1,17 +1,22 @@
 <template>
     <el-container class="mycontainer">
-      <el-aside width="230px" class="asside">
+      <el-aside width="auto" class="asside">
         <Menu></Menu>
       </el-aside>
       <el-container>
-        <el-header class="header">Header</el-header>
-        <el-main class="mymain">Main</el-main>
+        <el-header class="header">
+          <Collapse></Collapse>
+        </el-header>
+        <el-main class="mymain">
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
 </template>
 
 <script setup lang="ts">
 import Menu from './Menu.vue';
+import Collapse from './Collapse.vue';
 </script>
 
 <style scoped lang="scss">
@@ -21,10 +26,13 @@ import Menu from './Menu.vue';
       background-color: #304156;
   }
   .header{
-    background-color: blueviolet;
+    background-color: #009688;
+    color: #fff;
+    display: flex;
+    align-items: center;
   }
-  .mymain{
-    background-color: seagreen;
-  }
+  // .mymain{
+  //   // background-color: seagreen;
+  // }
 }
 </style>

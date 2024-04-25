@@ -1,10 +1,11 @@
 <template>
+  <MenuLogo></MenuLogo>
     <el-menu
-        default-active="/dashboard"
+        default-active="activeIndex"
         class="el-menu-vertical-demo"
         :collapse="isCollapse"
         unique-opened
-        routter
+        router
         @open="handleOpen"
         @close="handleClose"
         background-color="#304156"
@@ -15,9 +16,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref,reactive } from "vue";
+import { reactive, computed } from "vue";
+import { useRoute } from 'vue-router';
 import MenuItem from './MenuItem.vue';
-  let isCollapse = ref(false);
+import MenuLogo from './MenuLogo.vue';
+import path from "path";
+import { collapseStore } from '@/store/collapse/index'
+const store = collapseStore()
+//获取菜单收缩的属性
+const isCollapse = computed(()=>{
+  return store.getCollapse
+})
+//获取当前路由
+const route = useRoute()
+//获取当前激活的导航菜单
+const activeIndex = computed(()=>{
+  const {} = route;
+  return path;
+})
 
 //菜单数据
 let menuList = reactive([
@@ -79,7 +95,7 @@ let menuList = reactive([
     name: "goodsRoot",
     meta: {
       title: "商品管理",
-      icon: "Setting",
+      icon: "DocumentAdd",
       roles: ["sys:goodsRoot"],
     },
     children: [
@@ -121,7 +137,7 @@ let menuList = reactive([
     name: "order",
     meta: {
       title: "订单管理",
-      icon: "Setting",
+      icon: "Tickets",
       roles: ["sys:order"],
     },
     children: [
@@ -153,7 +169,7 @@ let menuList = reactive([
     name: "comment",
     meta: {
       title: "评论管理",
-      icon: "Setting",
+      icon: "Briefcase",
       roles: ["sys:comment"],
     },
     children: [
@@ -179,7 +195,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 230px;
